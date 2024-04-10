@@ -4,10 +4,10 @@ namespace ToDoList.Repositories.Interfaces
 {
     public interface ITarefasRepository
     {
-        public List<TarefasModel> GetTasks();
-        public TarefasModel GetTasks(int id);
-        public bool CreateTask(TarefasModel tarefa);
-        public bool UpdateTask(int id, TarefasModel tarefa);
-        public bool DeleteTask(int id);
+        public IEnumerable<TarefasModel> GetTasks();
+        public Task<TarefasModel> GetTasks(int id);
+        public Task CreateTask(TarefasModel tarefa);
+        public Task<TarefasModel> UpdateTask(int id, TarefasModel tarefa);
+        public Task DeleteTask(int id);
     }
 }

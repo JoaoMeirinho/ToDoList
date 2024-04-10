@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using ToDoList.Context;
 using System;
+using ToDoList.Repositories.Interfaces;
+using ToDoList.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +11,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("SqliteConnectionString"))
 );
 builder.Services.AddControllers();
+builder.Services.AddTransient<ITarefasRepository, TarefasRepository>();
+builder.Services.AddTransient<IUserRepository, UserRepository>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
